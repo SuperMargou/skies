@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skies - Connexion</title>
+  <script src="https://kit.fontawesome.com/b57b6f573f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="prefetch" href="index.html">
+  <link rel="prefetch" href="messages.html">
+  <link rel="prefetch" href="create.html">
+  <link rel="prefetch" href="profile.html">
+</head>
+<body class="login-page">
+  <div class="card login-card">
+    <div>
+      <h1>Bienvenue</h1>
+      <p>Connecte-toi ou cree un compte avec un pseudo + mot de passe.</p>
+    </div>
+    <div class="login-switch">
+      <button class="ghost" type="button" id="switch-login">Se connecter</button>
+      <button class="ghost" type="button" id="switch-register">Creer un compte</button>
+    </div>
+    <form id="login-form">
+      <input id="handle-input" class="input" minlength="3" maxlength="18" autocomplete="off" placeholder="Pseudo (ex: noctis)" required>
+      <input id="password-input" class="input" type="password" minlength="6" autocomplete="current-password" placeholder="Mot de passe (6+ caracteres)" required>
+      <button class="primary" type="submit" id="submit-btn">Se connecter</button>
+    </form>
+    <div id="login-error" class="char-count" style="color: var(--danger);"></div>
+    <div class="counts" id="helper-text">Mot de passe requis pour revenir sur ton compte.</div>
+  </div>
+
+  <script type="module">
+    import { Skies } from './js/skies.js?v=auth2';
+
+    const form = document.getElementById('login-form');
+    const input = document.getElementById('handle-input');
+    const passwordInput = document.getElementById('password-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const error = document.getElementById('login-error');
+    const helper = document.getElementById('helper-text');
+    const switchLogin = document.getElementById('switch-login');
+    const switchRegister = document.getElementById('switch-register');
+    let mode = 'login'; // 'login' ou 'register'
+
+    const syncMode = () => {
+      if (mode === 'login') {
+        submitBtn.textContent = 'Se connecter';
+        helper.textContent = 'Entre ton mot de passe pour acceder a ton compte.';
+        switchLogin.classList.add('primary');
+        switchRegister.classList.remove('primary');
+      } else {
+        submitBtn.textContent = 'Creer un compte';
+        helper.textContent = 'Cree un compte avec ce pseudo + mot de passe.';
+        switchRegister.classList.add('primary');
+        switchLogin.classList.remove('primary');
+      }
+    };
+
+    switchLogin.addEventListener('click', () => {
+      mode = 'login';
+      syncMode();
+    });
+
+    switchRegister.addEventListener('click', () => {
+      mode = 'register';
+      syncMode();
+    });
+
+    syncMode();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      error.textContent = '';
+      const handle = input.value.trim().toLowerCase();
+      const password = passwordInput.value;
+      if (handle.length < 3) {
+        error.textContent = 'Minimum 3 caracteres.';
+        input.focus();
+        return;
+      }
+      if (password.length < 6) {
+        error.textContent = 'Mot de passe : minimum 6 caracteres.';
+        passwordInput.focus();
+        return;
+      }
+      try {
+        if (mode === 'login') {
+          await Skies.loginWithPassword(handle, password);
+        } else {
+          await Skies.registerAccount(handle, password);
+        }
+        window.location.href = 'index.html';
+      } catch (err) {
+        error.textContent = err.message || 'Action impossible.';
+      }
+    });
+  </script>
+
+  <div class="mobile-nav">
+    <a href="/index.html" class="nav-item" aria-label="Accueil">
+      <i class="fa-solid fa-house nav-home-icon"></i>
+    </a>
+    <a href="/messages.html" class="nav-item" aria-label="Messages">
+      <i class="fa-regular fa-paper-plane"></i>
+    </a>
+    <a href="/create.html" class="nav-item" aria-label="Ajouter un post">
+      <i class="fa-regular fa-plus"></i>
+    </a>
+    <a href="/profile.html" class="nav-item" aria-label="Profil">
+      <i class="fa-regular fa-user"></i>
+    </a>
+  </div>
+</body>
+</html>

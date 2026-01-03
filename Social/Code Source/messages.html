@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skies - Messages</title>
+  <script src="https://kit.fontawesome.com/b57b6f573f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="prefetch" href="index.html">
+  <link rel="prefetch" href="create.html">
+  <link rel="prefetch" href="profile.html">
+</head>
+<body class="messages-page">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        Skies
+      </a>
+    </div>
+    <button class="mobile-toggle" id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+    <div class="user-actions">
+      <a class="handle-link topbar-profile" href="profile.html" id="profile-link">
+        <div class="avatar" id="avatar">--</div>
+        <span id="user-handle"></span>
+      </a>
+      <a class="ghost" href="messages.html" id="messages-link">Messages</a>
+      <a class="primary topbar-cta" href="create.html">Ajouter un post</a>
+      <button class="ghost" id="logout-btn">Deconnexion</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="messages-shell">
+      <div class="thread-panel">
+        <div class="messages-header">
+          <h1>Messages</h1>
+        </div>
+        <div class="search-pill">
+          <span aria-hidden="true">&#128269;</span>
+          <input type="search" id="search-user" placeholder="Rechercher un utilisateur" />
+        </div>
+        <div id="thread-list" class="thread-list conversations-list"></div>
+      </div>
+
+      <div class="chat-panel chat-container">
+        <div class="chat-header header" id="chat-header">
+          <button type="button" class="ghost mobile-back back-btn-mobile" id="chat-back" aria-label="Retour" title="Retour">&#8592;</button>
+          <a class="chat-peer chat-peer-link" id="chat-peer-link" href="#" role="button">
+            <div class="avatar" id="chat-avatar">--</div>
+            <div>
+              <div class="handle" id="chat-handle"></div>
+              <div class="timestamp" id="chat-status">Select. une conversation</div>
+            </div>
+          </a>
+          <a class="ghost desktop-profile-button" href="#" id="chat-profile-link" style="display:none;">Voir le profil</a>
+        </div>
+
+        <div id="chat-body" class="chat-body chat-area empty">
+          Choisis un contact pour afficher la conversation.
+        </div>
+
+        <form id="chat-form" class="chat-input-row footer" autocomplete="off">
+          <input id="chat-input" class="input" placeholder="Ecrire un message" />
+          <button class="primary" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/skies.js?v=auth2"></script>
+  <script type="module" src="js/messages.js"></script>
+
+  <nav class="mobile-nav">
+    <a href="/index.html" class="nav-item" aria-label="Accueil">
+      <i class="fa-solid fa-house nav-home-icon"></i>
+    </a>
+    <a href="/messages.html" class="nav-item" aria-label="Messages">
+      <i class="fa-regular fa-paper-plane"></i>
+    </a>
+    <a href="/create.html" class="nav-item" aria-label="Ajouter un post">
+      <i class="fa-regular fa-plus"></i>
+    </a>
+    <a href="/profile.html" id="mobile-profile-link" class="nav-item" aria-label="Profil">
+      <i class="fa-regular fa-user"></i>
+    </a>
+  </nav>
+</body>
+</html>

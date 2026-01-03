@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skies - Profil</title>
+  <script src="https://kit.fontawesome.com/b57b6f573f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="prefetch" href="index.html">
+  <link rel="prefetch" href="messages.html">
+  <link rel="prefetch" href="create.html">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        Skies
+      </a>
+    </div>
+    <button class="mobile-toggle" id="menu-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+    <div class="user-actions">
+      <a class="handle-link topbar-profile" href="profile.html" id="profile-link">
+        <div class="avatar" id="avatar">--</div>
+        <span id="user-handle"></span>
+      </a>
+      <a class="ghost" href="messages.html" id="messages-link">Messages</a>
+      <a class="primary topbar-cta" href="create.html">Ajouter un post</a>
+      <button class="ghost" id="logout-btn">Deconnexion</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card profile-card">
+      <div class="profile-row">
+        <div class="profile-header">
+          <div class="avatar" id="profile-avatar">--</div>
+          <div class="profile-header-meta">
+            <div id="profile-handle" class="handle"></div>
+            <div class="timestamp" id="profile-created"></div>
+            <div class="followers-line">Abonnés : <span id="followers-count">0</span></div>
+          </div>
+          <a class="edit-profile-icon" id="edit-profile-btn" href="edit-profile.html" aria-label="Modifier le profil">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </a>
+        </div>
+        <div class="profile-actions">
+          <a class="primary" id="dm-button" href="#">Envoyer un message</a>
+          <button class="primary" id="follow-btn" style="display:none;">S'abonner</button>
+          <button class="ghost logout-full" id="profile-logout">Déconnexion</button>
+        </div>
+      </div>
+
+      <div class="bio-block" id="bio-display"></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/skies.js?v=auth2"></script>
+  <script type="module" src="js/profile.js"></script>
+
+  <div class="mobile-nav">
+    <a href="/index.html" class="nav-item" aria-label="Accueil">
+      <i class="fa-solid fa-house nav-home-icon"></i>
+    </a>
+    <a href="/messages.html" class="nav-item" aria-label="Messages">
+      <i class="fa-regular fa-paper-plane"></i>
+    </a>
+    <a href="/create.html" class="nav-item" aria-label="Ajouter un post">
+      <i class="fa-regular fa-plus"></i>
+    </a>
+    <a href="/profile.html" class="nav-item" aria-label="Profil">
+      <i class="fa-regular fa-user"></i>
+    </a>
+  </div>
+</body>
+</html>

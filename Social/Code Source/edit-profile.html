@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skies - Éditer le profil</title>
+  <script src="https://kit.fontawesome.com/b57b6f573f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="prefetch" href="index.html">
+  <link rel="prefetch" href="messages.html">
+  <link rel="prefetch" href="profile.html">
+</head>
+<body class="messages-page">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="index.html">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        Skies
+      </a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card profile-card">
+      <h1 style="margin-top:0;">Modifier le profil</h1>
+      <form class="bio-form" id="bio-form">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <label for="bio-input" style="font-weight:600;margin:0;">Ta bio</label>
+          <a class="ghost" href="profile.html" style="margin-left:auto;">Retour</a>
+        </div>
+        <textarea id="bio-input" maxlength="300" placeholder="Ecris quelque chose sur toi"></textarea>
+        <label class="file-input" style="width:max-content;">
+          Changer la photo de profil
+          <input type="file" id="avatar-input" accept="image/*">
+        </label>
+        <div class="bio-actions">
+          <button class="primary" type="submit">Enregistrer</button>
+        </div>
+        <div class="char-count" id="bio-count"></div>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="js/skies.js?v=auth2"></script>
+  <script type="module" src="js/edit-profile.js"></script>
+
+  <div class="mobile-nav">
+    <a href="/index.html" class="nav-item" aria-label="Accueil">
+      <i class="fa-regular fa-house"></i>
+    </a>
+    <a href="/messages.html" class="nav-item" aria-label="Messages">
+      <i class="fa-regular fa-paper-plane"></i>
+    </a>
+    <a href="/create.html" class="nav-item" aria-label="Ajouter un post">
+      <i class="fa-regular fa-plus"></i>
+    </a>
+    <a href="/profile.html" class="nav-item" aria-label="Profil">
+      <i class="fa-regular fa-user"></i>
+    </a>
+  </div>
+</body>
+</html>
